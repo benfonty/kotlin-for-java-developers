@@ -1,33 +1,54 @@
 package mastermind
 
+import java.util.concurrent.atomic.AtomicReference
+
 data class Evaluation(val rightPosition: Int, val wrongPosition: Int)
 
-fun String.removeAt(index: Int): String {
-    return this.substring(0, index) + "_" + this.substring(index + 1)
+fun AtomicReference<String>.blancCharAt(index: Int) {
+    this.run {
+        set(get().substring(0, index) + "_" + get().substring(index + 1))
+    }
+}
+
+fun AtomicReference<String>.removeAllBlancs() {
+    this.run {
+        set(get().replace("_", ""))
+    }
+}
+
+fun calculateRights(guess: AtomicReference<String>, secret: AtomicReference<String>): Int {
+    var right = 0
+    for ((i, c) in guess.get().withIndex()) {
+        if (c == secret.get()[i]) {
+            right += 1
+            guess.blancCharAt(i)
+            secret.blancCharAt(i)
+        }
+        println("iteration $i rights $right guess ${guess.get()} working string ${secret.get()}")
+    }
+    return right
+}
+
+fun calculateWrongs(guess: AtomicReference<String>, secret: AtomicReference<String>): Int {
+    var wrong = 0
+    guess.removeAllBlancs()
+    for ((i, c) in guess.get().withIndex()) {
+        val index = secret.get().indexOfFirst { it == c }
+        if (index != -1) {
+            wrong += 1
+            secret.blancCharAt(index)
+        }
+        println("iteration $i  wrongs $wrong guess ${guess.get()} working string ${secret.get()}")
+    }
+    return wrong
 }
 
 fun evaluateGuess(secret: String, guess: String): Evaluation {
-    var _secret = secret
-    var _guess = guess
-    var right = 0
-    var wrong = 0
+    val guess = AtomicReference(guess)
+    val secret = AtomicReference(secret)
 
-    for ((i, c) in guess.withIndex()) {
-        if (c == _secret[i]) {
-            right += 1
-            _secret = _secret.removeAt(i)
-            _guess = _guess.removeAt(i)
-        }
-        println("iteration $i rights $right guess $guess working string $_secret")
-    }
-    _guess = _guess.replace("_", "")
-    for ((i, c) in _guess.withIndex()) {
-        val index = _secret.indexOfFirst { it == c }
-        if (index != -1) {
-            wrong += 1
-            _secret = _secret.removeAt(index)
-        }
-        println("iteration $i  wrongs $wrong guess $_guess working string $_secret")
-    }
+    var right = calculateRights(guess, secret)
+    var wrong = calculateWrongs(guess, secret)
+
     return Evaluation(right, wrong)
 }
