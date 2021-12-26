@@ -9,8 +9,8 @@ files:
 - name: src/mastermind/evaluateGuess.kt
   visible: true
   placeholders:
-  - offset: 1522
-    length: 36
+  - offset: 406
+    length: 70
     placeholder_text: TODO()
     initial_state:
       length: 6
@@ -261,5 +261,5 @@ status: Unchecked
 feedback:
   message: Submission successful, please <a href="https://www.coursera.org/learn/kotlin-for-java-developers/programming/vmwVT/mastermind-game/submission">check
     the status on Coursera</a>
-  time: Sun, 26 Dec 2021 13:54:34 UTC
+  time: Sun, 26 Dec 2021 14:42:58 UTC
 record: -1
