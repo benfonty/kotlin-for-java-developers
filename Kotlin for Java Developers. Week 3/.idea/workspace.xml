@@ -22,6 +22,16 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -39,39 +49,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="show.inlinked.gradle.project.popup" value="false" />
   </component>
-  <component name="RunManager" selected="Gradle.TestTask5TheMostFrequentTripDurationPeriod">
+  <component name="RunManager" selected="Gradle.TestTask6ParetoPrinciple">
     <configuration default="true" type="Codeforces" factoryName="Codeforces">
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestNiceString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestTask6ParetoPrinciple" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;nicestring.TestNiceString&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":Nice_String-Task:test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="TestTask1FakeDrivers" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask1FakeDrivers&quot;" />
+        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask6ParetoPrinciple&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -87,12 +76,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestTask2FaithfulPassengers" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestTask6ParetoPrinciple.test1" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask2FaithfulPassengers&quot;" />
+        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask6ParetoPrinciple.test1&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -108,12 +97,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestTask3FrequentPassengers" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestTask6ParetoPrinciple.test3" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask3FrequentPassengers&quot;" />
+        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask6ParetoPrinciple.test3&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -129,12 +118,33 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestTask5TheMostFrequentTripDurationPeriod" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestTask6ParetoPrinciple.test4" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask5TheMostFrequentTripDurationPeriod&quot;" />
+        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask6ParetoPrinciple.test4&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Taxi_Park-Task:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TestTask6ParetoPrinciple.testParetoPrincipleNoTrips" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask6ParetoPrinciple.testParetoPrincipleNoTrips&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -163,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.TestTask5TheMostFrequentTripDurationPeriod" />
-        <item itemvalue="Gradle.TestTask3FrequentPassengers" />
-        <item itemvalue="Gradle.TestTask2FaithfulPassengers" />
-        <item itemvalue="Gradle.TestTask1FakeDrivers" />
-        <item itemvalue="Gradle.TestNiceString" />
+        <item itemvalue="Gradle.TestTask6ParetoPrinciple" />
+        <item itemvalue="Gradle.TestTask6ParetoPrinciple.testParetoPrincipleNoTrips" />
+        <item itemvalue="Gradle.TestTask6ParetoPrinciple.test4" />
+        <item itemvalue="Gradle.TestTask6ParetoPrinciple.test3" />
+        <item itemvalue="Gradle.TestTask6ParetoPrinciple.test1" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +190,7 @@
       <option name="presentableId" value="Default" />
       <updated>1640812608686</updated>
       <workItem from="1640812611184" duration="2567000" />
-      <workItem from="1640881120525" duration="4526000" />
+      <workItem from="1640881120525" duration="9805000" />
     </task>
     <servers />
   </component>
@@ -197,6 +207,11 @@
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/Taxi Park/Task/src/taxipark/TaxiParkTask.kt</url>
+          <line>74</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

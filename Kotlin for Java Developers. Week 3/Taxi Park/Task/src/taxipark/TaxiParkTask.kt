@@ -17,9 +17,8 @@ fun TaxiPark.findFaithfulPassengers(minTrips: Int): Set<Passenger> =
         this.allPassengers
     else
         this.trips
-                // TODO replace the two following methods by an alternative to groupby
-            .flatMap { trip -> trip.passengers.map {trip to it } }
-            .groupBy { it.second }
+            .flatMap { trip -> trip.passengers.map {it to trip} }
+            .groupBy { it.first }
             .filter { (_, trips)  -> trips.size >= minTrips}
             .keys
 
@@ -30,8 +29,8 @@ fun TaxiPark.findFaithfulPassengers(minTrips: Int): Set<Passenger> =
 fun TaxiPark.findFrequentPassengers(driver: Driver): Set<Passenger> =
     this.trips
         .filter {it.driver == driver}
-        .flatMap { trip -> trip.passengers.map {trip.driver to it } }
-        .groupBy { it.second }
+        .flatMap { trip -> trip.passengers.map {it to trip} }
+        .groupBy { it.first }
         .filter { (_, trips)  -> trips.size > 1}
         .keys
 
@@ -39,7 +38,14 @@ fun TaxiPark.findFrequentPassengers(driver: Driver): Set<Passenger> =
  * Task #4. Find the passengers who had a discount for majority of their trips.
  */
 fun TaxiPark.findSmartPassengers(): Set<Passenger> =
-        TODO()
+    trips
+        .flatMap { trip -> trip.passengers.map {it to trip} }
+        .groupBy { it.first }
+        .mapValues { entry -> entry.value.partition {it.second.discount != null} }
+        .filterValues { it.first.size > it.second.size }
+        .keys
+
+
 
 /*
  * Task #5. Find the most frequent trip duration among minute periods 0..9, 10..19, 20..29, and so on.
@@ -60,9 +66,21 @@ fun TaxiPark.findTheMostFrequentTripDurationPeriod(): IntRange? {
  * Check whether 20% of the drivers contribute 80% of the income.
  */
 fun TaxiPark.checkParetoPrinciple(): Boolean {
-    val trips80PercentOfTheIncome: Set<Trip> = TODO()
-    val drivers80PercentOfIncome = trips80PercentOfTheIncome
-        .map { it.driver}
-        .toSet()
-    return drivers80PercentOfIncome.size / allDrivers.size * 100 == 20
+    if (trips.isEmpty()) return false
+
+    fun find20PercentOfDrivers():Int? {
+        val twentyPerCent = this.allDrivers.size.toDouble() * 20 / 100
+        return if (twentyPerCent.toString().indexOf(".") != -1) twentyPerCent.toInt() else null
+    }
+    val twentyPercent = find20PercentOfDrivers() ?: return false
+
+    val drivers = allDrivers.take(twentyPercent)
+
+    val allIncome = trips.sumByDouble { it.cost }
+
+    val incomeForDrivers = trips
+        .filter { it.driver in drivers }
+        .sumByDouble { it.cost }
+
+    return incomeForDrivers >= allIncome * 80 / 100
 }
