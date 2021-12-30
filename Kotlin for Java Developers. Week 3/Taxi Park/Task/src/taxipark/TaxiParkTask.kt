@@ -72,15 +72,16 @@ fun TaxiPark.checkParetoPrinciple(): Boolean {
         val twentyPerCent = this.allDrivers.size.toDouble() * 20 / 100
         return if (twentyPerCent.toString().indexOf(".") != -1) twentyPerCent.toInt() else null
     }
-    val twentyPercent = find20PercentOfDrivers() ?: return false
+    val twentyPercentOFDrivers = find20PercentOfDrivers() ?: return false
 
-    val drivers = allDrivers.take(twentyPercent)
+    val incomeForTwentyPercentOfDrivers = trips.groupBy { it.driver }
+        .mapValues { it.value.sumByDouble { v -> v.cost } }
+        .entries
+        .sortedByDescending { it.value }
+        .take(twentyPercentOFDrivers)
+        .sumByDouble { it.value }
 
     val allIncome = trips.sumByDouble { it.cost }
 
-    val incomeForDrivers = trips
-        .filter { it.driver in drivers }
-        .sumByDouble { it.cost }
-
-    return incomeForDrivers >= allIncome * 80 / 100
+    return incomeForTwentyPercentOfDrivers >= allIncome * 80 / 100
 }
