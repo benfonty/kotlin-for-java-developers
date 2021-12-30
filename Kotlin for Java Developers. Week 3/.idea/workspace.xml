@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7ae7f59e-e3ac-42de-b42c-085a77beb6a4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nice String/Task/src/nicestring/NiceString.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Nice String/Task/src/nicestring/NiceString.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nice String/Task/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Nice String/Task/task-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nice String/lesson-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Nice String/lesson-info.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Taxi Park/Task/src/taxipark/TaxiParkTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Taxi Park/Task/src/taxipark/TaxiParkTask.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Taxi Park/Task/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Taxi Park/Task/task-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Taxi Park/lesson-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Taxi Park/lesson-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/course-info.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +39,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="show.inlinked.gradle.project.popup" value="false" />
   </component>
-  <component name="RunManager" selected="Gradle.TestNiceString">
+  <component name="RunManager" selected="Gradle.TestTask5TheMostFrequentTripDurationPeriod">
     <configuration default="true" type="Codeforces" factoryName="Codeforces">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -70,18 +66,18 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestNiceString.testExample3" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestTask1FakeDrivers" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;nicestring.TestNiceString.testExample3&quot;" />
+        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask1FakeDrivers&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":Nice_String-Task:test" />
+            <option value=":Taxi_Park-Task:test" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -91,18 +87,60 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestNiceString.testExample4" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestTask2FaithfulPassengers" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;nicestring.TestNiceString.testExample4&quot;" />
+        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask2FaithfulPassengers&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":Nice_String-Task:test" />
+            <option value=":Taxi_Park-Task:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TestTask3FrequentPassengers" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask3FrequentPassengers&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Taxi_Park-Task:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TestTask5TheMostFrequentTripDurationPeriod" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;taxipark.TestTask5TheMostFrequentTripDurationPeriod&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":Taxi_Park-Task:test" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -125,9 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TestTask5TheMostFrequentTripDurationPeriod" />
+        <item itemvalue="Gradle.TestTask3FrequentPassengers" />
+        <item itemvalue="Gradle.TestTask2FaithfulPassengers" />
+        <item itemvalue="Gradle.TestTask1FakeDrivers" />
         <item itemvalue="Gradle.TestNiceString" />
-        <item itemvalue="Gradle.TestNiceString.testExample4" />
-        <item itemvalue="Gradle.TestNiceString.testExample3" />
       </list>
     </recent_temporary>
   </component>
@@ -139,7 +179,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1640812608686</updated>
-      <workItem from="1640812611184" duration="1947000" />
+      <workItem from="1640812611184" duration="2567000" />
+      <workItem from="1640881120525" duration="4526000" />
     </task>
     <servers />
   </component>
