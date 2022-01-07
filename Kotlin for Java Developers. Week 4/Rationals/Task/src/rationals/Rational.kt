@@ -2,56 +2,53 @@ package rationals
 
 import java.lang.IllegalArgumentException
 import java.math.BigInteger
+import java.math.BigInteger.ZERO
+import java.math.BigInteger.ONE
 
-private val zero: BigInteger = BigInteger.valueOf(0)
-private val one: BigInteger = BigInteger.valueOf(1)
-
-class Rational(val numerator: BigInteger, val denominator: BigInteger): Comparable<Rational> {
-
-    init { if (denominator == zero) throw IllegalArgumentException() }
+@Suppress("DataClassPrivateConstructor")
+data class Rational
+    private constructor(val numerator: BigInteger, val denominator: BigInteger):Comparable<Rational> {
+        companion object {
+            fun from(numerator: BigInteger, denominator: BigInteger): Rational {
+                if (denominator == ZERO) throw IllegalArgumentException()
+                val sign = denominator.signum().toBigInteger()
+                val gcd = numerator.gcd(denominator)
+                return Rational(numerator * sign / gcd, denominator * sign / gcd)
+            }
+        }
 
     operator fun plus(other: Rational): Rational = when {
-        this.numerator == zero -> other
-        other.numerator == zero -> this
-        else -> this.numerator * other.denominator + other.numerator * this.denominator divBy this.denominator * other.denominator
+        this.numerator == ZERO -> other
+        other.numerator == ZERO -> this
+        else -> Rational.from(
+            this.numerator * other.denominator + other.numerator * this.denominator,
+            this.denominator * other.denominator
+        )
     }
     operator fun minus(other: Rational): Rational = this + -other
-    operator fun times(other: Rational): Rational = this.numerator * other.numerator divBy this.denominator * other.denominator
+    operator fun times(other: Rational): Rational = Rational.from(
+        this.numerator * other.numerator,
+        this.denominator * other.denominator
+    )
     operator fun div(other: Rational): Rational = when (other.numerator) {
-        zero -> zero divBy this.denominator
-        else -> this * (other.denominator divBy other.numerator)
+        ZERO -> throw IllegalArgumentException()
+        else -> this * Rational.from(other.denominator, other.numerator)
     }
     operator fun rangeTo(other: Rational): ClosedRange<Rational> = RangeRational(this, other)
     override operator fun compareTo(other: Rational): Int {
         return (numerator * other.denominator).compareTo(other.numerator * denominator)
     }
     override fun toString(): String {
-        val tmp = minusToNumerator()
-        val gcd = tmp.numerator.gcd(tmp.denominator)
-        var newNumerator = tmp.numerator / gcd
-        var newDenominator = tmp.denominator / gcd
-        if (newDenominator == one) return "$newNumerator"
-        return "$newNumerator/$newDenominator"
+        if (denominator == ONE) return "$numerator"
+        return "$numerator/$denominator"
     }
-    operator fun unaryMinus(): Rational = -this.numerator divBy this.denominator
-    override fun equals(other:Any?): Boolean = when (other) {
-        is Rational -> this.numerator * other.denominator == this.denominator * other.numerator
-        else -> false
-    }
-
-    private fun minusToNumerator(): Rational =
-        if (this.denominator > zero) {
-            this
-        } else {
-            - this.numerator divBy - this.denominator
-        }
-
+    operator fun unaryMinus(): Rational = Rational.from(-this.numerator, this.denominator)
 }
 
 class RangeRational(override val start: Rational, override val endInclusive: Rational) : ClosedRange<Rational>
 
 
-infix fun BigInteger.divBy(other: BigInteger): Rational = Rational(this, other)
+infix fun BigInteger.divBy(other: BigInteger): Rational = Rational.from(this, other)
 
 infix fun Long.divBy(other: Long): Rational = BigInteger.valueOf(this) divBy BigInteger.valueOf(other)
 
@@ -60,8 +57,8 @@ infix fun Int.divBy(other: Int): Rational = this.toBigInteger() divBy other.toBi
 fun String.toRational(): Rational {
     val splitList = this.split("/")
     return when (splitList.size) {
-        1 -> toBigInteger() divBy one
-        2 -> splitList[0].toBigInteger() divBy splitList[1].toBigInteger()
+        1 -> Rational.from(toBigInteger(), ONE)
+        2 -> Rational.from(splitList[0].toBigInteger(), splitList[1].toBigInteger())
         else -> throw IllegalArgumentException()
     }
 }
