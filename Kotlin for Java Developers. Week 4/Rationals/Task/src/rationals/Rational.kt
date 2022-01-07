@@ -23,9 +23,7 @@ class Rational(val numerator: BigInteger, val denominator: BigInteger): Comparab
     }
     operator fun rangeTo(other: Rational): ClosedRange<Rational> = RangeRational(this, other)
     override operator fun compareTo(other: Rational): Int {
-        val _this = minusToNumerator()
-        val _other = other.minusToNumerator()
-        return (_this.numerator * _other.denominator).compareTo(_other.numerator * _this.denominator)
+        return (numerator * other.denominator).compareTo(other.numerator * denominator)
     }
     override fun toString(): String {
         val tmp = minusToNumerator()
