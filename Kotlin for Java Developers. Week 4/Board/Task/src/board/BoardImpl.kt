@@ -41,5 +41,40 @@ fun createSquareBoard(width: Int): SquareBoard = object: SquareBoard {
     }
 
 }
-fun <T> createGameBoard(width: Int): GameBoard<T> = TODO()
+
+class GameBoardImpl <T>(private val squareBoard: SquareBoard): GameBoard<T>, SquareBoard by squareBoard {
+    private val cells: MutableMap<Cell, T?> = mutableMapOf()
+
+    init {
+        (1..width).flatMap { i -> (1..width).map { j -> i to j} }.forEach {(i, j) ->
+            val cell = getCell(i, j)
+            cells[cell] = null
+        }
+    }
+
+    override fun get(cell: Cell): T? {
+        return cells[cell]
+    }
+
+    override fun set(cell: Cell, value: T?) {
+        cells[cell] = value
+    }
+
+    override fun filter(predicate: (T?) -> Boolean): Collection<Cell> {
+        return cells.filterValues(predicate).keys
+    }
+
+    override fun find(predicate: (T?) -> Boolean): Cell? {
+        return filter(predicate).firstOrNull()
+    }
+
+    override fun any(predicate: (T?) -> Boolean): Boolean {
+        return cells.values.any(predicate)
+    }
+
+    override fun all(predicate: (T?) -> Boolean): Boolean {
+        return cells.values.all(predicate)
+    }
+}
+fun <T> createGameBoard(width: Int): GameBoard<T> = GameBoardImpl(createSquareBoard(width))
 
