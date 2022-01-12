@@ -55,7 +55,7 @@ files:
   visible: true
   placeholders:
   - offset: 90
-    length: 6
+    length: 2215
     placeholder_text: TODO()
     initial_state:
       length: 6
@@ -63,7 +63,7 @@ files:
     initialized_from_dependency: false
     selected: false
     status: Unchecked
-  - offset: 149
+  - offset: 2358
     length: 6
     placeholder_text: TODO()
     initial_state:
