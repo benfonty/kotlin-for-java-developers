@@ -17,6 +17,20 @@ package games.game2048
  *
  * You can find more examples in 'TestGame2048Helper'.
 */
+
+fun <T : Any> MutableList<T>.replaceLast(e: T) {
+        this[size-1] = e
+}
+
 fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> =
-        TODO()
+        this.fold(mutableListOf()) {l, e ->
+                if (e != null) {
+                        if (l.size > 0 && e == l.last()) {
+                                l.replaceLast(merge(e))
+                        } else {
+                                l.add(e)
+                        }
+                }
+                l
+        }
 
