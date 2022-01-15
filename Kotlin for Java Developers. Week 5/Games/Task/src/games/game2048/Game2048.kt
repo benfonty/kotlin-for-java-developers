@@ -5,6 +5,7 @@ import board.Direction
 import board.GameBoard
 import board.createGameBoard
 import games.game.Game
+import board.Direction.*
 
 /*
  * Your task is to implement the game 2048 https://en.wikipedia.org/wiki/2048_(video_game).
@@ -37,6 +38,16 @@ class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
     override fun get(i: Int, j: Int): Int? = board.run { get(getCell(i, j)) }
 }
 
+fun GameBoard<Int?>.print() {
+    for (i in 1..width) {
+        println(getRow(i, 1..width)
+            .map {cell -> get(cell)}
+            .map {value -> value?.toString() ?: "_" }
+            .joinToString()
+        )
+    }
+}
+
 /*
  * Add a new value produced by 'initializer' to a specified cell in a board.
  */
@@ -54,7 +65,13 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
-    TODO()
+    var moved = false
+    val mergedValues = rowOrColumn.map { this[it] }.moveAndMergeEqual { i -> i * 2 }
+    for ((i, cell) in rowOrColumn.withIndex()) {
+        if (this[cell] != mergedValues.getOrNull(i)) moved = true
+        this[cell] = mergedValues.getOrNull(i)
+    }
+    return moved
 }
 
 /*
@@ -65,5 +82,15 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
-    TODO()
+    var moved = false
+    for (i in 1..width) {
+        val cells = when (direction) {
+            DOWN -> getColumn(1..width, i).reversed()
+            UP -> getColumn(1..width, i)
+            RIGHT -> getRow(i, 1..width).reversed()
+            LEFT -> getRow(i, 1..width)
+        }
+        if (moveValuesInRowOrColumn(cells)) moved = true
+    }
+    return moved
 }
