@@ -1,5 +1,7 @@
 package games.gameOfFifteen
 
+import java.lang.IllegalArgumentException
+
 /*
  * This function should return the parity of the permutation.
  * true - the permutation is even
@@ -11,12 +13,6 @@ package games.gameOfFifteen
  * Thus the initial permutation should be correct.
  */
 fun isEven(permutation: List<Int>): Boolean {
-
-    fun <T> MutableList<T>.swap(i: Int, j:Int) {
-        val tmp = get(i)
-        set(i, get(j))
-        set(j, tmp)
-    }
     val shift = if (0 in permutation) 0 else 1
     val workList = permutation.toMutableList()
     var nbPermutations = 0
@@ -24,9 +20,18 @@ fun isEven(permutation: List<Int>): Boolean {
         val elementThatShouldBeThere = i + shift
         if (workList[i] != elementThatShouldBeThere) {
             val index = workList.indexOf(elementThatShouldBeThere)
+                .takeIf { it != -1 }
+                ?: throw IllegalArgumentException("missing element in permutation")
+
             workList.swap(i, index)
             nbPermutations += 1
         }
     }
     return nbPermutations % 2 == 0
+}
+
+fun <T> MutableList<T>.swap(i: Int, j:Int) {
+    val tmp = get(i)
+    set(i, get(j))
+    set(j, tmp)
 }
